@@ -1,7 +1,19 @@
-const express = require("express")
-const morgan = require("morgan")
+require("dotenv").config();
+const express = require("express");
+const morgan = require("morgan");
+const mongoose = require('mongoose');
 
 const app = express();
+
+/**
+ * Database setup
+ */
+
+mongoose.connect('mongodb://192.168.99.108:27017/uploads',{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    
+})
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
